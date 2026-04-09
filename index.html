@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E.H Car | Estoque Atualizado</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #25d366; /* Cor do WhatsApp */
+            --bg: #f4f4f4;
+            --text: #333;
+        }
+
+        * { margin: 0; padding: 0; box-box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { background-color: var(--bg); color: var(--text); }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content { padding: 15px; }
+
+        .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
+
+        .card-info { color: #666; font-size: 0.9rem; margin-bottom: 10px; }
+
+        .card-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .btn-whats {
+            display: block;
+            background-color: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .vendido { opacity: 0.6; filter: grayscale(1); }
+        .vendido .btn-whats { background-color: #999; pointer-events: none; }
+
+        footer { text-align: center; padding: 40px 20px; color: #999; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>E.H Car Multimarcas</h1>
+        <p>Confira nosso estoque disponível</p>
+    </header>
+
+    <div class="container" id="estoque">
+        </div>
+
+    <footer>
+        &copy; 2024 E.H Car - Desenvolvido por Rocket Marketing
+    </footer>
+
+    <script>
+        // SEU LINK DA PLANILHA AQUI
+        const public_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSbLdAMBR8kRzXX9e8SqLwBgbMoVbKM9sJ2wePogZrXByFs3R8KzBb6VY2u7ST1A_H5FpljpPy-vD9g/pub?gid=0&single=true&output=csv';
+
+        function carregarEstoque() {
+            Papa.parse(public_url, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    const dados = results.data;
+                    const container = document.getElementById('estoque');
+                    container.innerHTML = '';
+
+                    dados.forEach(carro => {
+                        if(!carro.Modelo) return; // Pula linhas vazias
+
+                        const isVendido = carro.Status.toLowerCase() === 'vendido';
+                        
+                        const card = `
+                            <div class="card ${isVendido ? 'vendido' : ''}">
+                                ${isVendido ? '<div class="status-badge">Vendido</div>' : ''}
+                                <img src="${carro.Foto}" alt="${carro.Modelo}">
+                                <div class="card-content">
+                                    <div class="card-title">${carro.Modelo}</div>
+                                    <div class="card-info">${carro.Ano}</div>
+                                    <div class="card-price">${carro.Preco}</div>
+                                    <a href="https://wa.me/5511999999999?text=Olá, tenho interesse no ${carro.Modelo}" target="_blank" class="btn-whats">
+                                        Tenho Interesse
+                                    </a>
+                                </div>
+                            </div>
+                        `;
+                        container.innerHTML += card;
+                    });
+                }
+            });
+        }
+
+        window.onload = carregarEstoque;
+    </script>
+</body>
+</html>
