@@ -9,12 +9,12 @@
     <style>
         :root {
             --primary: #1a1a1a;
-            --accent: #25d366; /* Cor do WhatsApp */
+            --accent: #25d366; 
             --bg: #f4f4f4;
             --text: #333;
         }
 
-        * { margin: 0; padding: 0; box-box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         
         body { background-color: var(--bg); color: var(--text); }
 
@@ -27,10 +27,10 @@
         }
 
         .container {
-            padding: 15px;
+            padding: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -39,28 +39,69 @@
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
-        .card img {
+        /* Ajuste premium da imagem principal */
+        .main-img {
             width: 100%;
-            height: 200px;
+            aspect-ratio: 4/3; /* Proporção ideal para carros */
             object-fit: cover;
+            background-color: #e9e9e9;
         }
 
-        .card-content { padding: 15px; }
+        /* Miniaturas das fotos */
+        .gallery-thumbs {
+            display: flex;
+            gap: 8px;
+            padding: 10px 15px 0;
+        }
 
-        .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
+        .gallery-thumbs img {
+            width: 60px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.2s;
+        }
 
-        .card-info { color: #666; font-size: 0.9rem; margin-bottom: 10px; }
+        .gallery-thumbs img:hover {
+            border-color: var(--primary);
+            opacity: 0.8;
+        }
+
+        .card-content { 
+            padding: 15px; 
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; color: var(--primary); }
+
+        .card-info { color: #666; font-size: 0.9rem; margin-bottom: 10px; font-weight: 700; }
+
+        /* Nova área de descrição */
+        .card-desc {
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            flex-grow: 1; /* Empurra o botão para baixo */
+        }
 
         .card-price {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
         }
 
         .btn-whats {
@@ -68,25 +109,31 @@
             background-color: var(--accent);
             color: white;
             text-align: center;
-            padding: 12px;
+            padding: 14px;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 700;
+            transition: 0.2s;
         }
+
+        .btn-whats:hover { background-color: #20b858; }
 
         .status-badge {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.7);
+            top: 12px;
+            right: 12px;
+            background: rgba(220, 38, 38, 0.9); /* Vermelho para destaque */
             color: white;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            z-index: 10;
         }
 
-        .vendido { opacity: 0.6; filter: grayscale(1); }
+        .vendido { opacity: 0.75; }
         .vendido .btn-whats { background-color: #999; pointer-events: none; }
+        .vendido .main-img { filter: grayscale(1); }
 
         footer { text-align: center; padding: 40px 20px; color: #999; font-size: 0.8rem; }
     </style>
@@ -95,18 +142,19 @@
 
     <header>
         <h1>E.H Car Multimarcas</h1>
-        <p>Confira nosso estoque disponível</p>
+        <p>Confira nosso estoque atualizado</p>
     </header>
 
     <div class="container" id="estoque">
-        </div>
+        <p style="text-align:center; width:100%; padding: 40px;">Carregando carros do sistema...</p>
+    </div>
 
     <footer>
         &copy; 2024 E.H Car - Desenvolvido por Rocket Marketing
     </footer>
 
     <script>
-        // SEU LINK DA PLANILHA AQUI
+        // MANTENHA O SEU LINK DA PLANILHA AQUI
         const public_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSbLdAMBR8kRzXX9e8SqLwBgbMoVbKM9sJ2wePogZrXByFs3R8KzBb6VY2u7ST1A_H5FpljpPy-vD9g/pub?gid=0&single=true&output=csv';
 
         function carregarEstoque() {
@@ -116,22 +164,46 @@
                 complete: function(results) {
                     const dados = results.data;
                     const container = document.getElementById('estoque');
-                    container.innerHTML = '';
+                    container.innerHTML = ''; 
 
-                    dados.forEach(carro => {
-                        if(!carro.Modelo) return; // Pula linhas vazias
+                    dados.forEach((carro, index) => {
+                        const modelo = carro.Modelo || carro['Modelo '] || carro['modelo'];
+                        if(!modelo) return; 
 
-                        const isVendido = carro.Status.toLowerCase() === 'vendido';
+                        const preco = carro.Preco || carro.Preço || 'Sob Consulta';
+                        const status = carro.Status || carro['Status '] || 'Disponível';
+                        const ano = carro.Ano || carro['Ano '] || '';
+                        
+                        // Capturando os novos campos
+                        const descricao = carro.Descricao || carro['Descricao '] || carro['Descrição'] || '';
+                        const foto1 = carro.Foto || carro['Foto '] || 'https://via.placeholder.com/400x300?text=Sem+Foto';
+                        const foto2 = carro.Foto2 || carro['Foto2 '] || '';
+                        const foto3 = carro.Foto3 || carro['Foto3 '] || '';
+
+                        const isVendido = status.toLowerCase().trim() === 'vendido';
+                        const imgId = 'img-' + index; // ID único para a troca de fotos
+
+                        // Monta as miniaturas se existirem fotos extras
+                        let miniaturasHtml = '';
+                        if(foto2 || foto3) {
+                            miniaturasHtml = `<div class="gallery-thumbs">
+                                <img src="${foto1}" onclick="document.getElementById('${imgId}').src='${foto1}'" title="Foto 1">
+                                ${foto2 ? `<img src="${foto2}" onclick="document.getElementById('${imgId}').src='${foto2}'" title="Foto 2">` : ''}
+                                ${foto3 ? `<img src="${foto3}" onclick="document.getElementById('${imgId}').src='${foto3}'" title="Foto 3">` : ''}
+                            </div>`;
+                        }
                         
                         const card = `
                             <div class="card ${isVendido ? 'vendido' : ''}">
                                 ${isVendido ? '<div class="status-badge">Vendido</div>' : ''}
-                                <img src="${carro.Foto}" alt="${carro.Modelo}">
+                                <img id="${imgId}" src="${foto1}" class="main-img" alt="${modelo}">
+                                ${miniaturasHtml}
                                 <div class="card-content">
-                                    <div class="card-title">${carro.Modelo}</div>
-                                    <div class="card-info">${carro.Ano}</div>
-                                    <div class="card-price">${carro.Preco}</div>
-                                    <a href="https://wa.me/5511999999999?text=Olá, tenho interesse no ${carro.Modelo}" target="_blank" class="btn-whats">
+                                    <div class="card-title">${modelo}</div>
+                                    <div class="card-info">${ano}</div>
+                                    ${descricao ? `<div class="card-desc">${descricao}</div>` : ''}
+                                    <div class="card-price">${preco}</div>
+                                    <a href="https://wa.me/5511999999999?text=Olá, tenho interesse no ${modelo} anunciado." target="_blank" class="btn-whats">
                                         Tenho Interesse
                                     </a>
                                 </div>
