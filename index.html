@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estratégia Hits do iFood | Rocket For Eat</title>
     
-    <!-- ========================================== -->
-    <!-- COLE O SEU PIXEL DO FACEBOOK (META) ABAIXO -->
-    <!-- ========================================== -->
-    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1685896815966860');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1685896815966860&ev=PageView&noscript=1"
+    /></noscript>
     <!-- End Meta Pixel Code -->
 
     <style>
@@ -23,7 +35,6 @@
             --text-dark: #0F172A;
             --text-gray: #475569;
             --border-light: #E2E8F0;
-            --accent: #2563EB; /* Azul de confiança para links e destaques sutis */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
@@ -41,7 +52,7 @@
         header { background-color: var(--bg-white); padding: 15px 0; border-bottom: 1px solid var(--border-light); text-align: center; }
         .logo-img { max-width: 140px; height: auto; }
 
-        /* HERO SECTION (Focada em Conversão) */
+        /* HERO SECTION */
         .hero { text-align: center; padding: 60px 0; background-color: var(--bg-white); }
         .pre-headline { color: #DC2626; font-weight: 800; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
         .hero h1 { font-size: 2.8rem; margin-bottom: 24px; max-width: 800px; margin-left: auto; margin-right: auto; }
@@ -49,7 +60,8 @@
         
         /* BOTÕES DE COMPRA */
         .cta-button {
-            display: inline-block; background-color: var(--rocket-yellow); color: #000;
+            display: inline-flex; justify-content: center; align-items: center; text-align: center;
+            background-color: var(--rocket-yellow); color: #000;
             padding: 22px 35px; font-size: 1.2rem; font-weight: 900; text-decoration: none;
             border-radius: 8px; text-transform: uppercase; border: none; cursor: pointer;
             box-shadow: 0 10px 20px -5px rgba(255, 202, 8, 0.4);
@@ -88,32 +100,6 @@
         .faq-item h4 { font-size: 1.1rem; margin-bottom: 10px; color: var(--text-dark); }
         .faq-item p { color: var(--text-gray); font-size: 1rem; }
 
-        /* MODAL / POP-UP DE UPSELL */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px);
-            z-index: 9999; justify-content: center; align-items: center; padding: 20px;
-        }
-        .modal-box {
-            background: var(--bg-white); width: 100%; max-width: 550px; border-radius: 16px;
-            padding: 40px; text-align: center; position: relative;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: slide-up 0.3s ease-out;
-            border-top: 6px solid var(--rocket-yellow);
-        }
-        @keyframes slide-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .modal-title { font-size: 1.8rem; margin-bottom: 15px; color: #DC2626; }
-        .modal-text { font-size: 1.05rem; color: var(--text-gray); margin-bottom: 25px; }
-        
-        .upsell-box { background: var(--bg-light); border: 2px dashed #CBD5E1; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
-        .upsell-price { font-size: 1.5rem; font-weight: 900; color: var(--text-dark); margin-top: 10px; }
-        
-        .btn-yes { display: block; width: 100%; background: #16A34A; color: white; padding: 18px; border-radius: 8px; font-weight: 900; font-size: 1.1rem; text-decoration: none; margin-bottom: 15px; border: none; cursor: pointer; }
-        .btn-yes:hover { background: #15803D; }
-        .btn-no { display: block; width: 100%; background: transparent; color: var(--text-gray); padding: 15px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 0.95rem; border: none; cursor: pointer; text-decoration: underline; }
-        .btn-no:hover { color: var(--text-dark); }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #94A3B8; cursor: pointer; background: none; border: none; font-weight: bold; }
-
         /* MOBILE OPTIMIZATION */
         @media (max-width: 768px) {
             section { padding: 50px 0; }
@@ -121,8 +107,6 @@
             .benefits-grid { grid-template-columns: 1fr; gap: 20px; }
             .grid-2 { grid-template-columns: 1fr; gap: 30px; }
             .cta-button { font-size: 1rem; padding: 20px; }
-            .modal-box { padding: 30px 20px; }
-            .modal-title { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -142,8 +126,8 @@
             <h1>O Segredo Matemático para Dominar o Hits do iFood <span class="highlight">Sem Queimar seu Lucro.</span></h1>
             <p>O método exato para ajustar os centavos do seu cardápio, configurar os limites das campanhas e fazer o iFood subsidiar a sua entrega todos os dias.</p>
             
-            <!-- Botão agora abre o modal em vez de ir direto pra Kiwify -->
-            <button class="cta-button" onclick="openModal()">Quero Acessar o Manual Agora</button>
+            <!-- Link Kiwify Principal -->
+            <a href="https://pay.kiwify.com.br/BQCjmJu" class="cta-button">Quero Acessar o Manual Agora</a>
             <div class="price-tag">🔒 Pagamento único de R$ 19,90. Acesso imediato.</div>
         </div>
     </section>
@@ -187,7 +171,8 @@
                         <li><strong>Regras de Logística:</strong> Estratégias validadas tanto para frota própria quanto para quem usa a entrega parceira.</li>
                         <li><strong>Proteção de Margem:</strong> Entenda a matemática das faixas de R$ 5, R$ 8 e R$ 10 para não colocar produtos no prejuízo.</li>
                     </ul>
-                    <button class="cta-button" onclick="openModal()" style="margin-top: 30px; max-width: 100%;">Garantir Meu Acesso (R$ 19,90)</button>
+                    <!-- Link Kiwify Secundário -->
+                    <a href="https://pay.kiwify.com.br/BQCjmJu" class="cta-button" style="margin-top: 30px; max-width: 100%;">Garantir Meu Acesso (R$ 19,90)</a>
                 </div>
             </div>
         </div>
@@ -224,57 +209,5 @@
         </div>
     </footer>
 
-    <!-- ========================================== -->
-    <!-- MODAL POP-UP (OFERTA UPSELL DE R$ 59,90)   -->
-    <!-- ========================================== -->
-    <div id="upsellModal" class="modal-overlay">
-        <div class="modal-box">
-            <button class="close-modal" onclick="closeModal()">×</button>
-            
-            <div style="color: #DC2626; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px;">Espera! Oferta Única</div>
-            <h2 class="modal-title">Não otimize sua loja "no escuro".</h2>
-            <p class="modal-text">Você está levando o manual por <strong>R$ 19,90</strong>. Mas você gostaria que os especialistas da Rocket For Eat fizessem um <strong>Diagnóstico Completo</strong> no seu cardápio?</p>
-            
-            <div class="upsell-box">
-                <h4 style="color: var(--text-dark); margin-bottom: 8px;">Auditoria de Cardápio (+ R$ 59,90)</h4>
-                <p style="font-size: 0.95rem; color: var(--text-gray);">Na próxima tela, você informa o nome da sua loja. Nossa equipe fará uma varredura apontando exatamente onde você precisa melhorar fotos, descrições e engenharia de vendas.</p>
-                <div class="upsell-price">Tudo por: R$ 79,80</div>
-                <p style="font-size: 0.8rem; color: #94A3B8; margin-top: 5px;">(Manual R$ 19,90 + Diagnóstico R$ 59,90)</p>
-            </div>
-            
-            <!-- BOTOES DO POP-UP -->
-            
-            <!-- LINK 1: COLOQUE AQUI O LINK DA KIWIFY QUE TEM O PRODUTO + ORDER BUMP -->
-            <button class="btn-yes" onclick="window.location.href='LINK_KIWIFY_COM_UPSELL'">Sim, Quero a Auditoria Completa!</button>
-            
-            <!-- LINK 2: COLOQUE AQUI O LINK DA KIWIFY APENAS COM O PRODUTO DE 19,90 -->
-            <button class="btn-no" onclick="window.location.href='LINK_KIWIFY_APENAS_MANUAL'">Não obrigado, quero apenas o manual por R$ 19,90.</button>
-        </div>
-    </div>
-
-    <!-- SCRIPT DO MODAL -->
-    <script>
-        // Função para abrir o Pop-up
-        function openModal() {
-            document.getElementById('upsellModal').style.display = 'flex';
-            // Impede o scroll da página no fundo enquanto o modal está aberto
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Função para fechar o Pop-up
-        function closeModal() {
-            document.getElementById('upsellModal').style.display = 'none';
-            // Devolve o scroll da página
-            document.body.style.overflow = 'auto';
-        }
-
-        // Fecha o modal se o usuário clicar fora da caixa branca
-        window.onclick = function(event) {
-            var modal = document.getElementById('upsellModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-    </script>
 </body>
 </html>
