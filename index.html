@@ -12,15 +12,18 @@
     <!-- End Meta Pixel Code -->
 
     <style>
-        /* IDENTIDADE VISUAL ROCKET FOR EAT (LIGHT MODE SEGURO) */
+        /* =======================================================
+           IDENTIDADE VISUAL E VARIÁVEIS DE ALTA CONVERSÃO
+           ======================================================= */
         :root {
             --rocket-yellow: #FFCA08; 
-            --rocket-yellow-hover: #e5b600;
-            --bg-light: #F9FAFB;
+            --rocket-yellow-hover: #e0b000;
+            --bg-light: #F8FAFC;
             --bg-white: #FFFFFF;
-            --text-dark: #111827;
-            --text-gray: #4B5563;
-            --border-light: #E5E7EB;
+            --text-dark: #0F172A;
+            --text-gray: #475569;
+            --border-light: #E2E8F0;
+            --accent: #2563EB; /* Azul de confiança para links e destaques sutis */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
@@ -28,113 +31,104 @@
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
 
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 80px 0; }
 
-        section { padding: 70px 0; }
-
-        h1, h2, h3 { line-height: 1.25; font-weight: 800; color: var(--text-dark); }
+        h1, h2, h3 { line-height: 1.2; font-weight: 900; color: var(--text-dark); letter-spacing: -0.5px; }
         
-        .highlight { color: #000; background-color: var(--rocket-yellow); padding: 0 6px; border-radius: 4px; display: inline-block; margin-top: 4px;}
+        .highlight { background-color: var(--rocket-yellow); padding: 0 8px; border-radius: 4px; display: inline-block; color: #000; }
 
-        /* HEADER & LOGO */
-        header {
-            background-color: var(--bg-white);
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border-light);
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .logo-img { max-width: 150px; height: auto; }
+        /* HEADER */
+        header { background-color: var(--bg-white); padding: 15px 0; border-bottom: 1px solid var(--border-light); text-align: center; }
+        .logo-img { max-width: 140px; height: auto; }
 
-        /* HERO SECTION */
-        .hero { text-align: center; padding: 50px 0; background-color: var(--bg-white); border-bottom: 1px solid var(--border-light); }
-        .hero h1 { font-size: 2.6rem; margin-bottom: 24px; max-width: 850px; margin-left: auto; margin-right: auto; letter-spacing: -0.5px; }
-        .hero p { font-size: 1.15rem; color: var(--text-gray); max-width: 650px; margin: 0 auto 32px; }
+        /* HERO SECTION (Focada em Conversão) */
+        .hero { text-align: center; padding: 60px 0; background-color: var(--bg-white); }
+        .pre-headline { color: #DC2626; font-weight: 800; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 24px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .hero p { font-size: 1.2rem; color: var(--text-gray); max-width: 650px; margin: 0 auto 35px; }
         
-        /* BOTÕES DE CHECKOUT (Otimizados para toque) */
+        /* BOTÕES DE COMPRA */
         .cta-button {
-            display: inline-block;
-            background-color: var(--rocket-yellow);
-            color: #000;
-            padding: 20px 32px;
-            font-size: 1.1rem;
-            font-weight: 800;
-            text-decoration: none;
-            border-radius: 8px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 12px rgba(255, 202, 8, 0.25);
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 400px;
+            display: inline-block; background-color: var(--rocket-yellow); color: #000;
+            padding: 22px 35px; font-size: 1.2rem; font-weight: 900; text-decoration: none;
+            border-radius: 8px; text-transform: uppercase; border: none; cursor: pointer;
+            box-shadow: 0 10px 20px -5px rgba(255, 202, 8, 0.4);
+            transition: all 0.2s ease; width: 100%; max-width: 450px;
+            animation: pulse-button 2s infinite;
         }
-        .cta-button:hover { 
-            background-color: var(--rocket-yellow-hover); 
-            transform: translateY(-2px); 
-            box-shadow: 0 6px 16px rgba(255, 202, 8, 0.4); 
-        }
-
-        .price-tag { margin-top: 16px; font-size: 0.95rem; color: var(--text-gray); font-weight: 500; }
-
-        /* GRID E CARDS */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; align-items: center; }
+        .cta-button:hover { transform: translateY(-3px); background-color: var(--rocket-yellow-hover); }
         
-        .card {
-            background-color: var(--bg-white);
-            padding: 40px 32px;
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        @keyframes pulse-button {
+            0% { box-shadow: 0 0 0 0 rgba(255, 202, 8, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 202, 8, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 202, 8, 0); }
         }
 
-        .check-list { list-style: none; margin-top: 24px; }
-        .check-list li { margin-bottom: 16px; padding-left: 32px; position: relative; color: var(--text-gray); font-size: 1.05rem; }
-        .check-list li::before { content: '✓'; color: #000; position: absolute; left: 0; font-weight: 900; font-size: 1.2rem; }
+        .price-tag { margin-top: 15px; font-size: 0.95rem; color: var(--text-gray); font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
-        /* MOCKUP IMAGE */
-        .mockup-container { text-align: center; }
-        .mockup-img { 
-            max-width: 100%; 
-            height: auto; 
-            border-radius: 12px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        /* SEÇÃO: POR QUE ENTRAR NO HITS? */
+        .why-section { background-color: var(--text-dark); color: var(--bg-white); text-align: center; }
+        .why-section h2 { color: var(--bg-white); margin-bottom: 40px; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .benefit-card { padding: 30px; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        .benefit-card h3 { color: var(--rocket-yellow); font-size: 1.3rem; margin-bottom: 15px; }
+        .benefit-card p { color: #CBD5E1; font-size: 1rem; }
+
+        /* GRID CONTEÚDO (MOCKUP + LISTA) */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; align-items: center; }
+        .check-list { list-style: none; }
+        .check-list li { margin-bottom: 20px; padding-left: 35px; position: relative; color: var(--text-dark); font-size: 1.1rem; font-weight: 500; }
+        .check-list li::before { content: '✓'; color: #16A34A; position: absolute; left: 0; font-weight: 900; font-size: 1.4rem; top: -3px; }
+        .mockup-img { max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
+
+        /* FAQ - PERGUNTAS FREQUENTES */
+        .faq-section { background-color: var(--bg-white); }
+        .faq-container { max-width: 700px; margin: 0 auto; }
+        .faq-item { background: var(--bg-light); border: 1px solid var(--border-light); padding: 25px; margin-bottom: 15px; border-radius: 8px; }
+        .faq-item h4 { font-size: 1.1rem; margin-bottom: 10px; color: var(--text-dark); }
+        .faq-item p { color: var(--text-gray); font-size: 1rem; }
+
+        /* MODAL / POP-UP DE UPSELL */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px);
+            z-index: 9999; justify-content: center; align-items: center; padding: 20px;
         }
+        .modal-box {
+            background: var(--bg-white); width: 100%; max-width: 550px; border-radius: 16px;
+            padding: 40px; text-align: center; position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: slide-up 0.3s ease-out;
+            border-top: 6px solid var(--rocket-yellow);
+        }
+        @keyframes slide-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .modal-title { font-size: 1.8rem; margin-bottom: 15px; color: #DC2626; }
+        .modal-text { font-size: 1.05rem; color: var(--text-gray); margin-bottom: 25px; }
+        
+        .upsell-box { background: var(--bg-light); border: 2px dashed #CBD5E1; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+        .upsell-price { font-size: 1.5rem; font-weight: 900; color: var(--text-dark); margin-top: 10px; }
+        
+        .btn-yes { display: block; width: 100%; background: #16A34A; color: white; padding: 18px; border-radius: 8px; font-weight: 900; font-size: 1.1rem; text-decoration: none; margin-bottom: 15px; border: none; cursor: pointer; }
+        .btn-yes:hover { background: #15803D; }
+        .btn-no { display: block; width: 100%; background: transparent; color: var(--text-gray); padding: 15px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 0.95rem; border: none; cursor: pointer; text-decoration: underline; }
+        .btn-no:hover { color: var(--text-dark); }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #94A3B8; cursor: pointer; background: none; border: none; font-weight: bold; }
 
-        /* OFERTA FINAL */
-        .offer-section { text-align: center; background-color: var(--bg-white); border-top: 1px solid var(--border-light); }
-        .guarantee { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 24px; color: var(--text-gray); }
-
-        /* ========================================== */
-        /* OTIMIZAÇÃO EXTREMA PARA MOBILE (CELULAR)   */
-        /* ========================================== */
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 768px) {
             section { padding: 50px 0; }
-            
-            /* Ajuste da Promessa no celular para caber na tela sem quebrar a leitura */
-            .hero h1 { font-size: 1.9rem; margin-bottom: 20px; line-height: 1.3; }
-            .hero p { font-size: 1.05rem; padding: 0 10px; margin-bottom: 24px; }
-            
-            /* Grid empilha os itens e reduz o gap */
-            .grid-2 { grid-template-columns: 1fr; gap: 40px; margin-top: 32px; }
-            
-            /* Ajuste de espaçamentos nos cards para não espremer no celular */
-            .card { padding: 24px 20px; }
-            
-            h2 { font-size: 1.6rem; text-align: center; }
-            .text-mobile-center { text-align: center; }
-            
-            /* Botão ocupa 100% da largura visível no mobile */
-            .cta-button { font-size: 1.05rem; padding: 18px 24px; max-width: 100%; }
-            
-            .guarantee { flex-direction: column; text-align: center; gap: 8px; }
-            .guarantee span { text-align: center !important; }
+            .hero h1 { font-size: 2rem; }
+            .benefits-grid { grid-template-columns: 1fr; gap: 20px; }
+            .grid-2 { grid-template-columns: 1fr; gap: 30px; }
+            .cta-button { font-size: 1rem; padding: 20px; }
+            .modal-box { padding: 30px 20px; }
+            .modal-title { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER COM SUA LOGO (Hospedada via ImgBB) -->
+    <!-- HEADER -->
     <header>
         <div class="container">
             <img src="https://i.ibb.co/JFtR6PRv/Logo-Oficial.png" alt="Rocket For Eat" class="logo-img">
@@ -144,95 +138,143 @@
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <div style="color: var(--text-gray); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; font-size: 0.85rem;">
-                Documento Técnico para Donos de Delivery
-            </div>
+            <div class="pre-headline">Documento Estratégico para Donos de Delivery</div>
+            <h1>O Segredo Matemático para Dominar o Hits do iFood <span class="highlight">Sem Queimar seu Lucro.</span></h1>
+            <p>O método exato para ajustar os centavos do seu cardápio, configurar os limites das campanhas e fazer o iFood subsidiar a sua entrega todos os dias.</p>
             
-            <h1>Domine o Hits do iFood e <br class="hide-mobile"><span class="highlight">Proteja o seu Lucro.</span></h1>
-            
-            <p>Um manual prático e visual para organizar sua loja no Hits, ajustar a precificação corretamente e estruturar as taxas de entrega para a plataforma trabalhar a seu favor.</p>
-            
-            <!-- COLOQUE SEU LINK DA KIWIFY AQUI NO HREF -->
-            <a href="LINK_DA_KIWIFY_AQUI" class="cta-button">Quero Acessar o Manual</a>
-            <div class="price-tag">Pagamento único de R$ 19,90. Acesso imediato.</div>
+            <!-- Botão agora abre o modal em vez de ir direto pra Kiwify -->
+            <button class="cta-button" onclick="openModal()">Quero Acessar o Manual Agora</button>
+            <div class="price-tag">🔒 Pagamento único de R$ 19,90. Acesso imediato.</div>
         </div>
     </section>
 
-    <!-- DOR E PROBLEMA -->
-    <section>
-        <div class="container grid-2">
-            <div class="text-mobile-center">
-                <h2 style="margin-bottom: 24px;">Pequenos erros de configuração custam caro no final do mês.</h2>
-                <p style="color: var(--text-gray); margin-bottom: 16px;">Muitos donos de restaurantes ativam as campanhas do Hits sem calcular o impacto real dos descontos obrigatórios no custo do seu prato.</p>
-                <p style="color: var(--text-gray);">Além disso, falhas na configuração da área de entrega fazem o restaurante assumir custos operacionais que poderiam ser subsidiados pela plataforma.</p>
-                <p style="color: #000; font-weight: 700; margin-top: 24px;">Aprenda a matemática por trás da aba Hits para tomar decisões seguras e proteger seu caixa.</p>
-            </div>
-            
-            <div class="card" style="border-top: 5px solid var(--rocket-yellow);">
-                <h3 style="color: #000; font-size: 1.3rem;">Dificuldades Comuns na Operação:</h3>
-                <ul class="check-list">
-                    <li>Oferecer entrega grátis assumindo 100% do custo, sem utilizar o apoio logístico da campanha Hits.</li>
-                    <li>Aceitar cupons de R$ 8 ou R$ 10 em pratos que possuem uma margem de lucro apertada (CMV alto).</li>
-                    <li>Ficar de fora das principais vitrines do aplicativo por não estruturar os valores limite corretamente.</li>
-                </ul>
+    <!-- POR QUE ENTRAR NO HITS? -->
+    <section class="why-section">
+        <div class="container">
+            <h2>Por que você PRECISA dominar o Hits?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>🚀 O Segredo do Algoritmo</h3>
+                    <p>O iFood prioriza e dá muito mais visibilidade orgânica para lojas que participam ativamente do Hits. Estar de fora é ficar invisível na hora do pico.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>💰 Dinheiro do Aplicativo</h3>
+                    <p>O Hits possui o "Subsídio". Isso significa que o iFood injeta dinheiro na sua loja para pagar parte dos descontos e do frete. Se você não usa, rasga dinheiro.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🎯 Filtro de Clientes</h3>
+                    <p>A maioria dos usuários filtra o aplicativo por "Promoções" ou "Entrega Grátis". O Hits te coloca automaticamente nas listas que mais convertem vendas.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- A SOLUÇÃO (O E-BOOK COM O SEU MOCKUP) -->
+    <!-- A SOLUÇÃO (MOCKUP + LISTA) -->
     <section style="background-color: var(--bg-white);">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 16px;">O que você vai aprender neste material:</h2>
+            <h2 style="text-align: center; margin-bottom: 20px; font-size: 2.3rem;">O que você vai aplicar na sua loja hoje:</h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto;">O manual é visual. Mostramos a tela real do iFood para você simplesmente copiar e colar na sua operação.</p>
             
             <div class="grid-2">
-                <!-- SEU MOCKUP APLICADO AQUI -->
-                <div class="mockup-container">
+                <div style="text-align: center;">
                     <img src="https://i.ibb.co/N6gvdqPp/3ac20f1d-0ec5-4458-b976-20719fdfeae0.png" alt="Mockup do Manual iFood Hits" class="mockup-img">
                 </div>
                 
                 <div>
                     <ul class="check-list">
-                        <li><strong>Precificação Inteligente:</strong> Como o ajuste de poucos centavos no seu cardápio (ex: de R$ 25,00 para R$ 24,99) muda a faixa de desconto exigida pela campanha.</li>
-                        <li><strong>Estrutura de Entrega:</strong> O passo a passo visual para configurar o seu raio de atendimento e utilizar o subsídio de até 3km.</li>
-                        <li><strong>Modelos de Logística:</strong> Instruções exatas tanto para quem trabalha com frota própria quanto para quem usa a entrega parceira do iFood.</li>
-                        <li><strong>Visibilidade Estratégica:</strong> Entenda como o posicionamento correto no Hits aumenta o volume de pedidos sem quebrar o caixa da empresa.</li>
+                        <li><strong>O Hack de 1 Centavo:</strong> Como um ajuste simples de R$ 25,00 para R$ 24,99 te faz economizar reais valiosos por pedido.</li>
+                        <li><strong>O Jogo do Frete:</strong> Como configurar a sua taxa até 3km para o iFood devolver até R$ 10 para o seu caixa.</li>
+                        <li><strong>Regras de Logística:</strong> Estratégias validadas tanto para frota própria quanto para quem usa a entrega parceira.</li>
+                        <li><strong>Proteção de Margem:</strong> Entenda a matemática das faixas de R$ 5, R$ 8 e R$ 10 para não colocar produtos no prejuízo.</li>
                     </ul>
+                    <button class="cta-button" onclick="openModal()" style="margin-top: 30px; max-width: 100%;">Garantir Meu Acesso (R$ 19,90)</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- OFERTA E CTA FINAL -->
-    <section class="offer-section">
+    <!-- FAQ - PERGUNTAS FREQUENTES -->
+    <section class="faq-section">
         <div class="container">
-            <h2 style="font-size: 2.1rem; margin-bottom: 16px;">Informação validada para otimizar a sua operação.</h2>
-            <p style="color: var(--text-gray); font-size: 1.1rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Conhecimento direto ao ponto, com telas reais do portal do parceiro. É ler e aplicar na sua loja hoje mesmo.</p>
-            
-            <div class="card" style="max-width: 450px; margin: 0 auto; border: 2px solid var(--rocket-yellow);">
-                <div style="text-decoration: line-through; color: var(--text-gray); font-size: 1.1rem;">De R$ 47,00</div>
-                <div style="font-size: 4rem; font-weight: 900; color: #000; margin: 5px 0; line-height: 1; letter-spacing: -2px;">R$ 19,90</div>
-                <div style="font-size: 0.9rem; color: var(--text-gray); margin-bottom: 24px;">Pagamento Único</div>
-                
-                <!-- COLOQUE SEU LINK DA KIWIFY AQUI NO HREF -->
-                <a href="LINK_DA_KIWIFY_AQUI" class="cta-button">Garantir Meu Acesso</a>
-                
-                <div class="guarantee">
-                    <span style="font-size: 1.8rem;">🛡️</span>
-                    <span style="text-align: left; font-size: 0.9rem;"><strong>Garantia de 7 Dias:</strong><br>Acesso seguro. Se o material não for útil, devolvemos seu investimento.</span>
+            <h2 style="text-align: center; margin-bottom: 40px;">Dúvidas Frequentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h4>Isso serve para quem tem Entrega Própria (Motoboy da loja)?</h4>
+                    <p>Com certeza. Inclusive, o manual tem um módulo específico mostrando como configurar a sua aba de áreas de entrega para aproveitar o subsídio de até R$ 10 do iFood, sem precisar zerar a sua taxa.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>E para quem usa a Entrega Parceira (Logística iFood)?</h4>
+                    <p>Sim! Você aprenderá a técnica do "Cupom Travado". Como você não controla a área de entrega, te ensinamos a criar um cupom interno para não estourar o orçamento.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Como vou receber o material?</h4>
+                    <p>Assim que o pagamento de R$ 19,90 for confirmado, você recebe instantaneamente o acesso ao PDF estruturado no e-mail que você cadastrar na compra.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>O iFood não pode mudar essas regras?</h4>
+                    <p>As campanhas específicas mudam de nome, mas a matemática das "faixas de desconto obrigatório" é a base do algoritmo deles há anos. Você vai aprender o princípio, e ele serve para qualquer promoção.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 48px 24px; color: var(--text-gray); font-size: 0.9rem; background-color: var(--bg-light);">
+    <footer style="text-align: center; padding: 40px 24px; color: var(--text-gray); font-size: 0.9rem;">
         <div class="container">
-            <img src="https://i.ibb.co/JFtR6PRv/Logo-Oficial.png" alt="Rocket For Eat" style="max-width: 120px; margin-bottom: 16px; opacity: 0.7; filter: grayscale(100%);">
             <p>&copy; 2026 Rocket For Eat. Todos os direitos reservados.</p>
-            <p style="margin-top: 12px; font-size: 0.75rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-                Este site não faz parte do Facebook, Instagram ou iFood. Os resultados variam de acordo com a execução técnica de cada estabelecimento.
-            </p>
         </div>
     </footer>
 
+    <!-- ========================================== -->
+    <!-- MODAL POP-UP (OFERTA UPSELL DE R$ 59,90)   -->
+    <!-- ========================================== -->
+    <div id="upsellModal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()">×</button>
+            
+            <div style="color: #DC2626; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px;">Espera! Oferta Única</div>
+            <h2 class="modal-title">Não otimize sua loja "no escuro".</h2>
+            <p class="modal-text">Você está levando o manual por <strong>R$ 19,90</strong>. Mas você gostaria que os especialistas da Rocket For Eat fizessem um <strong>Diagnóstico Completo</strong> no seu cardápio?</p>
+            
+            <div class="upsell-box">
+                <h4 style="color: var(--text-dark); margin-bottom: 8px;">Auditoria de Cardápio (+ R$ 59,90)</h4>
+                <p style="font-size: 0.95rem; color: var(--text-gray);">Na próxima tela, você informa o nome da sua loja. Nossa equipe fará uma varredura apontando exatamente onde você precisa melhorar fotos, descrições e engenharia de vendas.</p>
+                <div class="upsell-price">Tudo por: R$ 79,80</div>
+                <p style="font-size: 0.8rem; color: #94A3B8; margin-top: 5px;">(Manual R$ 19,90 + Diagnóstico R$ 59,90)</p>
+            </div>
+            
+            <!-- BOTOES DO POP-UP -->
+            
+            <!-- LINK 1: COLOQUE AQUI O LINK DA KIWIFY QUE TEM O PRODUTO + ORDER BUMP -->
+            <button class="btn-yes" onclick="window.location.href='LINK_KIWIFY_COM_UPSELL'">Sim, Quero a Auditoria Completa!</button>
+            
+            <!-- LINK 2: COLOQUE AQUI O LINK DA KIWIFY APENAS COM O PRODUTO DE 19,90 -->
+            <button class="btn-no" onclick="window.location.href='LINK_KIWIFY_APENAS_MANUAL'">Não obrigado, quero apenas o manual por R$ 19,90.</button>
+        </div>
+    </div>
+
+    <!-- SCRIPT DO MODAL -->
+    <script>
+        // Função para abrir o Pop-up
+        function openModal() {
+            document.getElementById('upsellModal').style.display = 'flex';
+            // Impede o scroll da página no fundo enquanto o modal está aberto
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Função para fechar o Pop-up
+        function closeModal() {
+            document.getElementById('upsellModal').style.display = 'none';
+            // Devolve o scroll da página
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fecha o modal se o usuário clicar fora da caixa branca
+        window.onclick = function(event) {
+            var modal = document.getElementById('upsellModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
