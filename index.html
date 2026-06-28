@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Código do iFood Hits | Rocket For Eat</title>
+    <title>Estratégia de Campanhas iFood | Rocket For Eat</title>
     
     <!-- ========================================== -->
     <!-- COLE O SEU PIXEL DO FACEBOOK (META) ABAIXO -->
@@ -12,81 +12,94 @@
     <!-- End Meta Pixel Code -->
 
     <style>
+        /* NOVA IDENTIDADE VISUAL ROCKET FOR EAT */
         :root {
-            --bg-dark: #05070a;
-            --bg-card: #0e1219;
-            --rocket-green: #00ffbf;
-            --rocket-green-hover: #00d9a3;
-            --text-light: #f4f4f5;
-            --text-muted: #8b9bb4;
-            --border-tech: #1e293b;
-            --danger: #ef4444;
+            --rocket-yellow: #FFCA08; /* Amarelo extraído da logo */
+            --rocket-yellow-hover: #e5b600;
+            --bg-light: #F9FAFB;
+            --bg-white: #FFFFFF;
+            --text-dark: #111827;
+            --text-gray: #4B5563;
+            --border-light: #E5E7EB;
+            --danger-soft: #FEE2E2;
+            --danger-text: #B91C1C;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
 
-        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
 
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        section { padding: 60px 0; border-bottom: 1px solid var(--border-tech); }
+        section { padding: 60px 0; }
 
-        h1, h2, h3 { line-height: 1.2; font-weight: 800; }
+        h1, h2, h3 { line-height: 1.2; font-weight: 800; color: var(--text-dark); }
         
-        .highlight { color: var(--rocket-green); }
-        .danger-text { color: var(--danger); }
+        .highlight { color: #000; background-color: var(--rocket-yellow); padding: 0 8px; border-radius: 2px; }
+
+        /* HEADER & LOGO */
+        header {
+            background-color: var(--bg-white);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-light);
+            text-align: center;
+        }
+        
+        .logo-img {
+            max-width: 180px;
+            height: auto;
+        }
 
         /* HERO SECTION */
-        .hero { text-align: center; padding: 80px 0 60px; background: radial-gradient(circle at center, #101825 0%, var(--bg-dark) 70%); }
-        .hero h1 { font-size: 2.8rem; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 30px; }
+        .hero { text-align: center; padding: 60px 0; background-color: var(--bg-white); border-bottom: 1px solid var(--border-light); }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .hero p { font-size: 1.15rem; color: var(--text-gray); max-width: 700px; margin: 0 auto 30px; }
         
         /* BOTÕES DE CHECKOUT */
         .cta-button {
             display: inline-block;
-            background-color: var(--rocket-green);
+            background-color: var(--rocket-yellow);
             color: #000;
-            padding: 20px 40px;
-            font-size: 1.2rem;
-            font-weight: 900;
+            padding: 18px 36px;
+            font-size: 1.1rem;
+            font-weight: 800;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             text-transform: uppercase;
-            box-shadow: 0 0 20px rgba(0, 255, 191, 0.3);
+            box-shadow: 0 4px 6px rgba(255, 202, 8, 0.3);
             transition: all 0.3s ease;
-            animation: pulse 2s infinite;
+            border: 2px solid transparent;
         }
-        .cta-button:hover { transform: translateY(-3px); background-color: white; box-shadow: 0 5px 25px rgba(0, 255, 191, 0.6); }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 255, 191, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(0, 255, 191, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 255, 191, 0); }
+        .cta-button:hover { 
+            background-color: var(--rocket-yellow-hover); 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 12px rgba(255, 202, 8, 0.4); 
         }
 
-        .price-tag { margin-top: 15px; font-size: 1rem; color: var(--text-muted); }
+        .price-tag { margin-top: 15px; font-size: 0.9rem; color: var(--text-gray); font-weight: 500; }
 
         /* PROBLEMA & SOLUÇÃO */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; align-items: center; }
         
         .card {
-            background-color: var(--bg-card);
-            padding: 30px;
-            border-radius: 4px;
-            border: 1px solid var(--border-tech);
+            background-color: var(--bg-white);
+            padding: 35px;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
         .check-list { list-style: none; margin-top: 20px; }
-        .check-list li { margin-bottom: 15px; padding-left: 30px; position: relative; color: var(--text-muted); }
-        .check-list li::before { content: '✓'; color: var(--rocket-green); position: absolute; left: 0; font-weight: bold; font-size: 1.2rem; }
+        .check-list li { margin-bottom: 15px; padding-left: 30px; position: relative; color: var(--text-gray); }
+        .check-list li::before { content: '✓'; color: #000; position: absolute; left: 0; font-weight: bold; font-size: 1.2rem; }
 
         /* OFERTA FINAL */
-        .offer-section { text-align: center; background: linear-gradient(180deg, var(--bg-dark) 0%, #0a111a 100%); border: none; }
-        .guarantee { display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 30px; color: var(--text-muted); }
+        .offer-section { text-align: center; background-color: var(--bg-white); border-top: 1px solid var(--border-light); }
+        .guarantee { display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 30px; color: var(--text-gray); }
 
         /* RESPONSIVIDADE */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 1.8rem; }
             .grid-2 { grid-template-columns: 1fr; }
             .cta-button { width: 100%; padding: 20px; font-size: 1rem; }
         }
@@ -94,56 +107,63 @@
 </head>
 <body>
 
-    <!-- HERO SECTION -->
+    <!-- HEADER COM SUA LOGO -->
+    <header>
+        <div class="container">
+            <img src="Logo Oficial.png" alt="Rocket For Eat" class="logo-img">
+        </div>
+    </header>
+
+    <!-- HERO SECTION (COPY SEGURA PARA META ADS) -->
     <section class="hero">
         <div class="container">
-            <div style="color: var(--rocket-green); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; font-size: 0.9rem;">
-                Exclusivo para Donos de Delivery
+            <div style="color: var(--text-gray); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; font-size: 0.85rem;">
+                Documento Técnico para Donos de Delivery
             </div>
-            <h1>Pare de "Bancar" o Aplicativo. Faça o iFood <span class="highlight">Pagar o Seu Frete.</span></h1>
-            <p>Descubra o passo a passo visual para hackear as campanhas do iFood Hits, dominar o algoritmo e parar de queimar a margem do seu cardápio com descontos errados.</p>
+            <h1>Aprenda a Configurar as Campanhas do iFood e <span class="highlight">Proteger o seu Lucro.</span></h1>
+            <p>Um manual prático e visual para organizar as promoções da sua loja, ajustar sua precificação corretamente e estruturar suas taxas de entrega de forma inteligente.</p>
             
             <!-- COLOQUE SEU LINK DA KIWIFY AQUI NO HREF -->
-            <a href="LINK_DA_KIWIFY_AQUI" class="cta-button">Quero Acessar o Manual Agora</a>
-            <div class="price-tag">Pagamento único e seguro. Acesso imediato.</div>
+            <a href="LINK_DA_KIWIFY_AQUI" class="cta-button">Quero Acessar o Manual Rápido</a>
+            <div class="price-tag">Pagamento único de R$ 19,90. Acesso imediato.</div>
         </div>
     </section>
 
-    <!-- DOR E PROBLEMA -->
+    <!-- DOR E PROBLEMA (Linguagem Consultiva) -->
     <section>
         <div class="container grid-2">
             <div>
-                <h2 style="margin-bottom: 20px;">Você está perdendo dinheiro todos os dias sem perceber.</h2>
-                <p style="color: var(--text-muted); margin-bottom: 15px;">Se você vai no painel do iFood e coloca o seu frete como <strong>R$ 0,00</strong> para dar entrega grátis aos clientes, você está rasgando o seu lucro.</p>
-                <p style="color: var(--text-muted);">Se você coloca um lanche na campanha de desconto sem calcular a trava do limite, o aplicativo consome o lucro que deveria pagar suas contas.</p>
-                <p style="color: var(--rocket-green); font-weight: bold; margin-top: 20px;">A culpa não é sua. Ninguém te ensinou a matemática por trás do botão "Aceitar Campanha".</p>
+                <h2 style="margin-bottom: 20px;">Pequenos erros de configuração custam caro no final do mês.</h2>
+                <p style="color: var(--text-gray); margin-bottom: 15px;">Muitos donos de restaurantes entram nas campanhas do aplicativo sem calcular o impacto real dos descontos no custo do seu prato.</p>
+                <p style="color: var(--text-gray);">Além disso, falhas na configuração da área de entrega muitas vezes fazem o restaurante assumir custos operacionais que poderiam ser gerenciados de forma mais estratégica na plataforma.</p>
+                <p style="color: #000; font-weight: 700; margin-top: 20px;">Aprenda a matemática por trás da aba de campanhas para tomar decisões seguras e baseadas em dados.</p>
             </div>
-            <div class="card" style="border-color: var(--danger);">
-                <h3 class="danger-text">O Erro Comum:</h3>
+            <div class="card" style="border-top: 4px solid var(--rocket-yellow);">
+                <h3 style="color: #000;">Dificuldades Comuns na Operação:</h3>
                 <ul class="check-list" style="margin-top: 15px;">
-                    <li style="color: #ccc;">Zerar a taxa de entrega no painel e pagar o frete sozinho.</li>
-                    <li style="color: #ccc;">Dar R$ 8 de desconto em um prato que já tem margem apertada.</li>
-                    <li style="color: #ccc;">Ignorar o Hits e ficar invisível nas buscas da sua cidade.</li>
+                    <li>Oferecer entrega grátis assumindo 100% do custo, sem utilizar o apoio logístico da plataforma.</li>
+                    <li>Aceitar cupons de desconto em pratos que possuem uma margem de lucro muito apertada (CMV alto).</li>
+                    <li>Ficar de fora das principais abas promocionais por falta de clareza nas regras da plataforma.</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <!-- A SOLUÇÃO (O E-BOOK) -->
-    <section style="background-color: var(--bg-card);">
+    <section style="background-color: var(--bg-white);">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px;">O que você vai dominar neste Manual Rápido:</h2>
+            <h2 style="text-align: center; margin-bottom: 40px;">O que você vai aprender neste material:</h2>
             <div class="grid-2">
-                <!-- SE VOCÊ TIVER UM MOCKUP 3D DO EBOOK, COLOQUE AQUI -->
-                <div style="background: #1e293b; height: 300px; border-radius: 4px; display: flex; justify-content: center; align-items: center; border: 1px dashed #445164;">
-                    <span style="color: #8b9bb4;">[IMAGEM / MOCKUP DO E-BOOK AQUI]</span>
+                <!-- ESPAÇO PARA O MOCKUP DO EBOOK -->
+                <div style="background: var(--bg-light); height: 350px; border-radius: 8px; display: flex; justify-content: center; align-items: center; border: 1px dashed var(--border-light);">
+                    <span style="color: var(--text-gray); font-weight: 500;">[Insira a imagem/capa do E-book aqui]</span>
                 </div>
                 <div>
                     <ul class="check-list">
-                        <li><strong>O Hack de 1 Centavo:</strong> Como mudar o seu preço de R$ 25,00 para R$ 24,99 e salvar R$ 2,99 de lucro puro por venda.</li>
-                        <li><strong>O Jogo do Frete:</strong> O passo a passo visual, clique a clique, para fazer o iFood subsidiar até R$ 10 da sua entrega.</li>
-                        <li><strong>Estratégia Logística:</strong> Configurações exatas para quem tem motoboy próprio ou usa a entrega parceira.</li>
-                        <li><strong>Explosão de Volume:</strong> Como usar a engenharia das faixas de cupons para o algoritmo te jogar no topo das buscas na hora da fome.</li>
+                        <li><strong>Precificação Inteligente:</strong> Como o ajuste de poucos centavos no seu cardápio (ex: de R$ 25,00 para R$ 24,99) muda a faixa de desconto exigida pela campanha.</li>
+                        <li><strong>Estrutura de Entrega:</strong> O passo a passo visual para configurar o seu raio de atendimento e utilizar a plataforma da forma correta.</li>
+                        <li><strong>Modelos de Logística:</strong> Instruções exatas tanto para quem trabalha com frota própria quanto para quem usa a entrega parceira.</li>
+                        <li><strong>Visibilidade Estratégica:</strong> Entenda como o posicionamento correto nas campanhas aumenta a atração de clientes para a sua loja.</li>
                     </ul>
                 </div>
             </div>
@@ -153,28 +173,31 @@
     <!-- OFERTA E CTA FINAL -->
     <section class="offer-section">
         <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">O preço de um lanche para <span class="highlight">salvar o seu caixa.</span></h2>
-            <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 40px;">Conhecimento direto ao ponto, com prints reais do painel do parceiro. É copiar e colar na sua operação hoje.</p>
+            <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Informação validada para otimizar a sua operação.</h2>
+            <p style="color: var(--text-gray); font-size: 1.1rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Conhecimento direto ao ponto, com telas reais do portal do parceiro. É ler e aplicar na sua loja hoje mesmo.</p>
             
-            <div class="card" style="max-width: 500px; margin: 0 auto; border-color: var(--rocket-green);">
-                <div style="text-decoration: line-through; color: var(--text-muted); font-size: 1.2rem;">De R$ 47,00</div>
-                <div style="font-size: 3.5rem; font-weight: 900; color: white; margin: 10px 0; line-height: 1;">R$ 19,90</div>
+            <div class="card" style="max-width: 500px; margin: 0 auto; border: 2px solid var(--rocket-yellow);">
+                <div style="text-decoration: line-through; color: var(--text-gray); font-size: 1.1rem;">De R$ 47,00</div>
+                <div style="font-size: 3.5rem; font-weight: 900; color: #000; margin: 10px 0; line-height: 1;">R$ 19,90</div>
                 
                 <!-- COLOQUE SEU LINK DA KIWIFY AQUI NO HREF -->
-                <a href="LINK_DA_KIWIFY_AQUI" class="cta-button" style="width: 100%; margin-top: 20px;">Comprar Agora</a>
+                <a href="LINK_DA_KIWIFY_AQUI" class="cta-button" style="width: 100%; margin-top: 20px;">Baixar Manual Agora</a>
                 
                 <div class="guarantee">
                     <span style="font-size: 1.5rem;">🛡️</span>
-                    <span style="text-align: left; font-size: 0.9rem;"><strong>Risco Zero:</strong> 7 dias de garantia incondicional.<br>Seu dinheiro de volta se não gostar.</span>
+                    <span style="text-align: left; font-size: 0.85rem;"><strong>Garantia de 7 Dias:</strong><br>Acesso seguro. Se o material não for útil, devolvemos seu investimento.</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.9rem;">
+    <footer style="text-align: center; padding: 40px 20px; color: var(--text-gray); font-size: 0.85rem; background-color: var(--bg-light);">
         <div class="container">
-            <p>Rocket For Eat &copy; 2026. Todos os direitos reservados.</p>
-            <p style="margin-top: 10px; font-size: 0.8rem; color: #445164;">Este site não faz parte do Facebook, Instagram ou iFood. Os resultados dependem da execução individual de cada negócio.</p>
+            <img src="Logo Oficial.png" alt="Rocket For Eat" style="max-width: 120px; margin-bottom: 15px; opacity: 0.8;">
+            <p>&copy; 2026 Rocket For Eat. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; font-size: 0.75rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Este site não faz parte do Facebook, Instagram ou iFood. Os resultados variam de acordo com a execução técnica de cada estabelecimento.
+            </p>
         </div>
     </footer>
 
